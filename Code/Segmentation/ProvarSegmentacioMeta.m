@@ -4,7 +4,7 @@ im1 = imread('../Images/Meta/1.png');
 %im = imread('../Images/Train1/9/00009_00000_00024.png');
 
 %% Llegim les imatges i les guardem a un Cell Array
-images = saveMetaImages();
+[images, names] = saveMetaImages();
 
 
 %% Segmentem les imatges

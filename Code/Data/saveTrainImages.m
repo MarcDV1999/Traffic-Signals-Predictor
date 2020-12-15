@@ -1,13 +1,16 @@
-function images = saveTrainImages()
+function [images, names] = saveTrainImages()
 images = cell(1,18*7);
 count = 0;
 pos = 0;
+names = cell(1, length(images));
     for i = 1:1:length(images)
         if pos < 10
             str_im = sprintf('../Images/Train1/%d/0000%d_0000%d_00000.png', pos, pos, count);
+            names{i} = str_im;
             images{i} = imread(str_im);
         else
             str_im = sprintf('../Images/Train1/%d/000%d_0000%d_00000.png', pos, pos, count);
+            names{i} = str_im;
             images{i} = imread(str_im);
         end
 
