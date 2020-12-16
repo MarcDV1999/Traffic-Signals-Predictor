@@ -1,5 +1,5 @@
 function [cluster_color, cluster_ratio, cluster_labels] = ...
-    image2palette(nCluster, imgfullpath, plotOption)
+    image2palette2(nCluster, img, imgfullpath, plotOption)
 % Usage example: [c] = image2palette( 5, 'football.jpg' );
 % 
 % hiobeen.han@kaist.ac.kr, 2018-11-27.
@@ -7,7 +7,7 @@ function [cluster_color, cluster_ratio, cluster_labels] = ...
 % dependence: Image Processing Toolbox (v10.3)
 if nargin<1, nCluster = 4; end
 if nargin<2, [fname,path]=uigetfile('*.*');imgfullpath = [ path '\' fname ];end
-if nargin<3, plotOption = true; end
+if nargin<4, plotOption = true; end
 
 %% (0) Configure options
 resizeOption = false; sz = [200 200]; % size to resize
@@ -20,8 +20,8 @@ fname = tmp{end};
 path = imgfullpath( 1: findstr(imgfullpath, fname)-1 );
 if isempty(path), path=pwd; end
 
-try img = rgb2lab(imread([path '\' fname]));
-catch, try img = rgb2lab(imread([path '/' fname]));
+try img = rgb2lab(img);
+catch, try img = rgb2lab(img);
     catch,
         disp(['You tried [' [path '\' fname] ']']);
         error('File format is not supported; try *.jpg, *.png, *.tiff, etc.)');
