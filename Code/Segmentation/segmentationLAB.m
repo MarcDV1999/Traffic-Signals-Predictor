@@ -1,12 +1,10 @@
 function segmentedImage = segmentationLAB(im)
     %% Kmeans simple LAB
     % https://www.mathworks.com/help/images/color-based-segmentation-using-k-means-clustering.html
-
-    im_lab = rgb2lab(im);
-    ab = im_lab(:,:,2:3);
-    ab = im2single(ab);
-    nColors = 4;
-    % repeat the clustering 3 times to avoid local minima
-    [pixel_labels, centroids] = imsegkmeans(ab,nColors,'NumAttempts',3);
-    segmentedImage = label2rgb(pixel_labels, 'gray', 'c');
+    
+    nClusters = 3;
+    H1 = fspecial("average", [2 2]);
+    im_filtered = imfilter(im, H1); 
+    [cluster_color, cluster_ratio, cluster_labels] = image2palette(nClusters, im_filtered, fname);
+%figure, imshow(seg), title("B");
 end
