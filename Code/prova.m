@@ -6,7 +6,9 @@ addpath('OtherFunctions/FuzzyColor');
 
 %% Load Image
 fname = '../Images/Train1/1/00001_00006_00024.png';
+fname2 = '../Images/Train1/1/00001_00008_00024.png';
 im = imread(fname);
+im2 = imread(fname2);
 % Conseguim quin tipus de senyal es
 
 
@@ -40,6 +42,18 @@ im = imread(fname);
 %% Load Color Features
 
 %f = getColorFeatures(im, fname);
-data = createDataset();
+%data = createDataset();
+[featureVector,hogVisualization] = extractHOGFeatures(im);
+disp(size(featureVector));
+x = histogram(featureVector, 9).Values;
+
+%y = hist(featureVector, 9);
+
+%[featureVector,hogVisualization] = extractHOGFeatures(im2);
+%disp(size(featureVector));
 
 
+%figure;
+%imshow(im); 
+%hold on;
+%plot(hogVisualization);
