@@ -38,8 +38,43 @@ im = imread(fname);
 %subplot(2,2,4), imshow(segmentedImageFiltered), title("segmented Image Filtered");
 
 %% Load Color Features
+%features = getImageFeatures(im, fname);
+%disp(features);
+%data = createDataset();
 
+%nClusters = 3;
+%H1 = fspecial("average", [2 2]);
+%im_filtered = imfilter(im, H1); 
+%[cluster_color, cluster_ratio, cluster_labels] = image2palette(nClusters, im_filtered, fname, false);
+
+%lab = cluster_color(3,:);
+%c = lab2rgb(lab);
+%x = fuzzycolor(c);
 %f = getColorFeatures(im, fname);
-data = createDataset();
+
+%saveTrainImages();
+
+sum = 0;
 
 
+images = cell(1,48350);
+names = cell(1, length(images));
+count = 1;
+for i = 0:2
+        if i <= 17
+            folder = sprintf('../Images/Train1/%d/', i);
+        else
+            folder = sprintf('../Images/Train2/%d/', i);
+        end
+        
+        filesAndFolders = dir(folder);
+        for j = 1:numel(filesAndFolders)
+            if ~filesAndFolders(j).isdir
+                %disp(filesAndFolders(j).name) % disp displays the value of the input variable
+                fullname = sprintf("%s%s", folder, filesAndFolders(j).name);
+                images{count} = imread(fullname);
+                names{count} = fullname;
+                count = count + 1;
+            end
+        end
+end

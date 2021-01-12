@@ -60,7 +60,7 @@ for clusterIdx = 1:nCluster
     p(clusterIdx) = 100*length(find(G==clusterIdx)) / length(G);
 end
 [~,order]=sortrows(p'); order=order(end:-1:1);
-disp(['K-means clustering for image [ ' fname ' ]'])
+%disp(['K-means clustering for image [ ' fname ' ]'])
 
 % Variables to return
 cluster_color = []; 
@@ -123,18 +123,19 @@ end
 
 
 %% (5) Text display of results
+%{
 for clusterIdx = 1:nCluster
     lab = cluster_color(clusterIdx,:);
     ratio = cluster_ratio( clusterIdx );
     label = cluster_labels{clusterIdx};
     
-    disp(['#' num2str(clusterIdx) ' Lab = [ '...
-        num2str(round(100*(lab(1))/100)) ',' ...
-        num2str(round(100*(lab(2))/100)) ',' ...
-        num2str(round(100*(lab(3))/100))  ' ], ' ...
-        label ', ' num2str(round(100*(ratio)/100)) '%' ])
+    %disp(['#' num2str(clusterIdx) ' Lab = [ '...
+        %num2str(round(100*(lab(1))/100)) ',' ...
+        %num2str(round(100*(lab(2))/100)) ',' ...
+        %num2str(round(100*(lab(3))/100))  ' ], ' ...
+        %label ', ' num2str(round(100*(ratio)/100)) '%' ])
 end
-
+%}
 
 end
 

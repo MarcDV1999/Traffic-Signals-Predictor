@@ -1,24 +1,29 @@
 function [images, names] = saveTrainImages()
-images = cell(1,18*7);
-count = 0;
-pos = 0;
-names = cell(1, length(images));
-    for i = 1:1:length(images)
-        if pos < 10
-            str_im = sprintf('../Images/Train1/%d/0000%d_0000%d_00000.png', pos, pos, count);
-            names{i} = str_im;
-            images{i} = imread(str_im);
+interval = 10;
+size = floor(39209/interval);
+images = cell(1,size);
+names = cell(1, size);
+count = 1;
+index = 1;
+for i = 0:42
+        if i <= 17
+            folder = sprintf('../Images/Train1/%d/', i);
         else
-            str_im = sprintf('../Images/Train1/%d/000%d_0000%d_00000.png', pos, pos, count);
-            names{i} = str_im;
-            images{i} = imread(str_im);
+            folder = sprintf('../Images/Train2/%d/', i);
         end
-
-        if count == 6
-            pos = pos + 1;
-            count = 0;
-        else
-            count = count + 1;
+        
+        filesAndFolders = dir(folder);
+        for j = 1:numel(filesAndFolders)
+            if ~filesAndFolders(j).isdir && filesAndFolders(j).name ~= ".DS_Store"
+                %disp(filesAndFolders(j).name) % disp displays the value of the input variable
+                if mod(count, interval) == 0 
+                    fullname = sprintf("%s%s", folder, filesAndFolders(j).name);
+                    images{index} = imread(fullname);
+                    names{index} = fullname;
+                    index = index + 1;
+                end
+                count = count + 1;
+            end
         end
-    end
+end
 end
