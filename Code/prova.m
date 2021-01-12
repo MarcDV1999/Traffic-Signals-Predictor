@@ -7,8 +7,6 @@ addpath('Features');
 fname = '../Images/Train1/1/00001_00006_00024.png';
 im = imread(fname);
 % Conseguim quin tipus de senyal es
-folder = split(fname,"/");
-target = str2num(folder{4});
 
 
 %% image2palette()
@@ -39,6 +37,6 @@ target = str2num(folder{4});
 %subplot(2,2,4), imshow(segmentedImageFiltered), title("segmented Image Filtered");
 
 %% Load Color Features
-features = getImageFeatures(im, fname);
-f = [features, target];
-disp(features);
+%features = getImageFeatures(im, fname);
+%disp(features);
+data = createDataset();
