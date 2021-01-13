@@ -16,9 +16,14 @@ function features = getImageFeatures(im, fname, type)
     l = rgb2lab(im);
     
     
-    cercle = findCircles(im);
-    hoghFeatures = histogram(extractHOGFeatures(im), 16).Values;
+    try 
+        cercles = findCircles(im);
+        cercleFeature = 1;
+    catch error
+        cercleFeature = 0;
+    end
+    hoghFeatures = histogram(extractHOGFeatures(im), 10).Values;
     colorF = getColorFeatures(im, fname);
-    features = [colorF, hoghFeatures, target];
+    features = [colorF, hoghFeatures, cercleFeature, target];
     
 end

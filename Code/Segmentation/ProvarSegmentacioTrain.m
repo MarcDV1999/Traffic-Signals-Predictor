@@ -7,7 +7,7 @@ images = saveTrainImages();
 %% Segmentem les imatges
 %figure;
 for i = 1:length(images)
-    segmentedImage = segmentationLAB(images{i});
+    segmentedImage = segmentImage(images{i});
     
     imwrite(segmentedImage, sprintf("Images/imatge%d.png", i));
     %subplot(11, 12, i), imshow(grad), title(sprintf('%d-%d', ceil((i)/7) - 1, mod(i-1, 7)));

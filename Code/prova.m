@@ -7,7 +7,7 @@ addpath('OtherFunctions/FuzzyColor');
 %% Load Image
 fname = '../Images/Train1/1/00001_00006_00024.png';
 fname2 = '../Images/Train1/1/00001_00008_00024.png';
-fname3 = '../Images/Train1/7/00007_00006_00009.png';
+fname3 = '../Images/Train1/12/00012_00000_00000.png';
 im = imread(fname);
 im2 = imread(fname2);
 im3 = imread(fname3);
@@ -23,9 +23,15 @@ im3 = imread(fname3);
 %disp(size(featureVector));
 %x = histogram(featureVector, 9).Values;
 
-l = rgb2lab(im3);
+%l = rgb2lab(im3);
+%figure,
+%x = histogram(l, 30).Values;
+
+
+
+bin = segmentImage(im);
+% Mask the image using bsxfun() function
+maskedRgbImage = bsxfun(@times, im, cast(bin, 'like', im));
+
 figure,
-x = histogram(l, 30).Values;
-cercle = findCircles(im2);
-
-
+imshow(maskedRgbImage);
