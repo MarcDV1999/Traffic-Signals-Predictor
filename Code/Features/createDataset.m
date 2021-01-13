@@ -6,7 +6,8 @@ function dataset = createDataset()
 
         for i = 1:length(images)
             % Calcules els features de cada imatge i els afegim al dataset
-            features = getImageFeatures(images{i}, names{i}, "Train");
+            im_filtered = filterImage(images{i});
+            features = getImageFeatures(im_filtered, names{i}, "Train");
             disp(size(features))
             dataset = [dataset ; features];
         end
