@@ -17,23 +17,15 @@ function dataset = createDataset()
         %im_filtered = filterImage(images{i}); % No s'utilitza ja que dona
         %resultats lleujerament pitjors
         
-        % Prova active countorn
-        mask = zeros(size(images{i}));
-        [x,y] = size(images{i});
-        x = int8(x*0.1);
-        y = int8(y*0.1);
-        mask(x:end-x,y:end-y) = 1;
-        bw = activecontour(images{i},mask);
-        maskedRgbImage = bsxfun(@times, images{i}, cast(bw, 'like', images{i}));
-        features = getImageFeatures(maskedRgbImage, names{i}, "Train", min_r, min_c, mask);
         
-        %features = getImageFeatures(images{i}, names{i}, "Train", min_r, min_c);
-        disp(size(features))
+        
+        features = getImageFeatures(images{i}, names{i}, "Train", min_r, min_c);
+        %disp(size(features))
         dataset = [dataset ; features];
     end
         
-        
-
+    % Una vegada tenim el dataset, fem un shuffle
+    dataset = dataset(randperm(size(dataset, 1)), :);
     
 end
 

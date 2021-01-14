@@ -24,7 +24,7 @@ function features = getImageFeatures(im, fname, type, min_r, min_c, bw)
     end
     hoghFeatures = ourExtractHOGFeatures(im, min_r, min_c);
     colorF = getColorFeatures(im, fname);
-    %area = bwarea(bw);
-    features = [colorF, hoghFeatures, cercleFeature, target];
+    ratio = getImAreaRatio(im);    
+    features = [colorF, hoghFeatures, cercleFeature, ratio, target];
     
 end
