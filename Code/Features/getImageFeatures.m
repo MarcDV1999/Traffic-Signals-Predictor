@@ -1,4 +1,4 @@
-function features = getImageFeatures(im, fname, type, min_r, min_c, bw)
+function features = getImageFeatures(im, fname, type)
     
     if type == "Meta"
         folder = split(fname,"/");
@@ -22,9 +22,8 @@ function features = getImageFeatures(im, fname, type, min_r, min_c, bw)
     catch error
         cercleFeature = 0;
     end
-    hoghFeatures = ourExtractHOGFeatures(im, min_r, min_c);
+    hoghFeatures = histogram(extractHOGFeatures(im), 10).Values;
     colorF = getColorFeatures(im, fname);
-    %area = bwarea(bw);
     features = [colorF, hoghFeatures, cercleFeature, target];
     
 end

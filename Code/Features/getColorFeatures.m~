@@ -1,11 +1,11 @@
 function colorFeatures = getColorFeatures(im, fname)
     nClusters = 3;
-    [cluster_color, cluster_ratio, cluster_labels] = image2palette(nClusters, im, fname, false);
+    [cluster_color, cluster_ratio, cluster_labels] = image2palette(nClusters, im_filtered, fname, false);
     
     
     % Creem un vector que per cada color tindrem 2 caracteristiques
     %colorFeatures = cluster_color(:,[2:nClusters]);
-    colorFeatures = reshape(cluster_color, 1, []);
+    colorFeatures =[];
     
     % Guardarem 2 columnes que representen el seguent:
     % Red       Blue        Yellow
@@ -28,8 +28,7 @@ function colorFeatures = getColorFeatures(im, fname)
         end
     end
     %}
-    
-    colorFeatures = [colorFeatures, cluster_ratio];
+    colorFeatures = [colorFeatures, blue_p, red_p, yellow_p];
         
 end
 
