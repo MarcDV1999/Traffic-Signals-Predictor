@@ -1,5 +1,5 @@
 function [images, names] = saveTrainImages()
-interval = 20;
+interval = 50;
 size = floor(39209/interval);
 images = cell(1,size);
 names = cell(1, size);
