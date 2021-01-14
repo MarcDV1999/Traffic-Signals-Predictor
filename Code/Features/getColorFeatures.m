@@ -1,6 +1,6 @@
 function colorFeatures = getColorFeatures(im, fname)
     nClusters = 3;
-    [cluster_color, cluster_ratio, cluster_labels] = image2palette(nClusters, im, fname, false);
+    [cluster_color, cluster_ratio, ~] = image2palette(nClusters, im, fname, false);
     
     
     % Creem un vector que per cada color tindrem 2 caracteristiques
