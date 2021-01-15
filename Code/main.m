@@ -2,7 +2,6 @@
 addpath('OtherFunctions');  
 addpath('Segmentation');
 addpath('Features');
-addpath('OtherFunctions/FuzzyColor');
 
 %% Load Image
 fname = '../Images/Train1/1/00001_00006_00024.png';
@@ -15,20 +14,15 @@ im3 = imread(fname3);
 
 
 
-%% Create Dataset
+%% Creem Dataset
 
-%dataHogsPaletteLAB = createDataset();
+%data = createDataset();
 
+%% Prediim
 %predictTrafficSignal(trainModel1);
 
+%% Guardar Model
+%save KNN KNN
 
-%save SVM SVM
-
-C = corner(rgb2gray(im3), 30);
-    cornerF = length(C);
-        
-    imshow(rgb2gray(im2));
-    hold on
-    plot(C(:,1),C(:,2),'r*');
 
 

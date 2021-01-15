@@ -1,3 +1,5 @@
+% Retornem el el descriptor de color. En aquest cas retornem els
+% histogrames RGB de la Imatge
 function colorF = getColorFeatures(im, min_r, min_c)
     
     im_resized = imresize(im, [min_r, min_c]);

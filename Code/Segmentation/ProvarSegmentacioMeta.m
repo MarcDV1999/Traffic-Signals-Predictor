@@ -1,4 +1,6 @@
-clear all;
+% Script per a provar les funcions de segmentacio per a les imatges de
+% Meta. Crida a la segmentacio que toqui per totes les imatges i les
+% guarde a la carpeta Images
 
 im1 = imread('../Images/Meta/1.png');
 %im = imread('../Images/Train1/9/00009_00000_00024.png');

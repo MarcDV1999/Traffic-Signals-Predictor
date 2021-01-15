@@ -1,8 +1,10 @@
+% Funcio que crea el dataset 
 function dataset = createDataset()
 
     % Importem les imatges
     [images, names] = saveTrainImages();
  
+    % Calculem quina es la mida minima
     [min_r,min_c] = minSize(images);
     
     

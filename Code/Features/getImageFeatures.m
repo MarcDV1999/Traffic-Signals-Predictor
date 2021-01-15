@@ -1,5 +1,8 @@
+% Funcio que retorna el vector de caracteristiques d'una imatge
 function features = getImageFeatures(im, fname, type, min_r, min_c, bw)
     
+    % Depenent de on volguem treure les imatges hem de treure el target
+    % d'un lloc o de un altre
     if type == "Meta"
         folder = split(fname,"/");
         target = folder{4};
@@ -14,12 +17,11 @@ function features = getImageFeatures(im, fname, type, min_r, min_c, bw)
     
     %% Calcul de caracteristiques
     % Calculem totes les caracteristiques
-    %circleF = getIfCircle(im);
     hoghFeatures = getHogs(im, min_r, min_c);
     colorF = getColorFeatures(im, min_r, min_c);
+    %circleF = getIfCircle(im);
     %ratio = getImAreaRatio(im);  
     %cornerF = getCorners(im, 30);
-    %colorF = getColorFeatures(im, fname);
     
     
     % Juntem totes les caracteristiques

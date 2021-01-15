@@ -1,3 +1,4 @@
+% Mostra un seguit d'imatges
 function [] = showImages(images)
     figure;
     for i = 1:length(images)

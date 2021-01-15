@@ -1,4 +1,6 @@
-clear all;
+% Script per a provar les funcions de segmentacio per a les imatges de
+% Train. Crida a la segmentacio que toqui per totes les imatges i les
+% guarde a la carpeta Images
 %% Llegim les imatges i les guardem a un Cell Array
 images = saveTrainImages();
 

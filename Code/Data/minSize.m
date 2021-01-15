@@ -1,3 +1,4 @@
+% Donat un conjunt de imatges, calcula quina es la mida minima
 function [min_r,min_c] = minSize(images)
     % Calculem quina es l'imatge amb mida mes petita del dataset
     [min_r, min_c, ~] = size(images{1});

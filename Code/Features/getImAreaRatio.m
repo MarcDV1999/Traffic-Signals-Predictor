@@ -1,3 +1,4 @@
+% Funcio que calcula l’area del senyal de trànsit.
 function ratio = getImAreaRatio(im)
     % Prova active countorn
     mask = zeros(size(im));
