@@ -1,4 +1,4 @@
-clear all;
+%clear all;
 addpath('OtherFunctions');  
 addpath('Segmentation');
 addpath('Features');
@@ -15,23 +15,14 @@ im3 = imread(fname3);
 
 
 
-%% Load Color Features
+%% Create Dataset
 
-%f = getColorFeatures(im, fname);
-%data = createDataset();
-%[featureVector,hogVisualization] = extractHOGFeatures(im);
-%disp(size(featureVector));
-%x = histogram(featureVector, 9).Values;
+%da = createDataset();
 
-%l = rgb2lab(im3);
-%figure,
-%x = histogram(l, 30).Values;
+%predictTrafficSignal(trainModel1);
+
+
+%save KNN KNN
 
 
 
-bin = segmentImage(im);
-% Mask the image using bsxfun() function
-maskedRgbImage = bsxfun(@times, im, cast(bin, 'like', im));
-
-figure,
-imshow(maskedRgbImage);
