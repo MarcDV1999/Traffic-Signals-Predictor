@@ -1,35 +1,37 @@
 % Funcio que retorna el vector de caracteristiques d'una imatge
-function features = getImageFeatures(im, fname, type, min_r, min_c, bw)
+function [features, target] = getImageFeatures(im, fname)
     
     % Depenent de on volguem treure les imatges hem de treure el target
     % d'un lloc o de un altre
-    if type == "Meta"
+    
+    k = strfind(fname,'Meta');
+    
+    if isempty(k)
         folder = split(fname,"/");
-        target = folder{4};
+        target = str2num(folder{end-1});
+    
+    else
+        folder = split(fname,"/");
+        target = folder{end};
         target = split(target,".");
         target = str2num(target{1});
     
-    elseif type == "Train"
-        folder = split(fname,"/");
-        target = str2num(folder{4});
     end
     
     
     %% Calcul de caracteristiques
     % Calculem totes les caracteristiques
-    hoghFeatures = getHogs(im, min_r, min_c);
-    colorF = getColorFeatures(im, min_r, min_c);
-    %circleF = getIfCircle(im);
+    hoghFeatures = getHogs(im);
+    colorF = getColorFeatures(im);
+    circleF = getIfCircle(im);
     %ratio = getImAreaRatio(im);  
     %cornerF = getCorners(im, 30);
     
     
     % Juntem totes les caracteristiques
-    if type == "Predict"
-        features = [hoghFeatures, colorF];
-    else
-        features = [hoghFeatures, colorF, target];
-    end
+    features = [hoghFeatures, colorF, circleF];
+    features = reshape(features, 1, []);
+    
     
     
 end

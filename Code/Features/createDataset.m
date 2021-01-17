@@ -1,34 +1,40 @@
 % Funcio que crea el dataset 
-function dataset = createDataset()
+function [features, target] = createDataset(train)
 
-    % Importem les imatges
-    [images, names] = saveTrainImages();
- 
+    % Llegim les imatges
+    fprintf("Guardant totes les imatges\n\n");
+    images = readall(train);
+    names = train.Files;
+    
     % Calculem quina es la mida minima
+    fprintf("Redimensionant les imatges\n\n");
     [min_r,min_c] = minSize(images);
+    min_r = 35;
+    min_c = 35;
+    resizedImages = resizeImages(images, min_r, min_c);
     
+    [f, t] = getImageFeatures(filterImage(resizedImages{1}), names{1});
+    data = ones(size(images,1), size(f,2) + 1);
+    data(1, :) = [f, t];
     
-    
-    %% Generem el vector de caracteristiques
-    features = getImageFeatures(filterImage(images{1}), names{1}, "Train", min_r, min_c);
-    dataset = ones(size(images,2), size(features,2));
-    dataset(1, :) = features(:);
-     
+    %% Generem el vector de caracteristiques     
     % Calcules els features de cada imatge i els afegim al dataset
-    for i = 2:length(images)
-        features = getImageFeatures(filterImage(images{i}), names{i}, "Train", min_r, min_c);
-        
-        % Mostrem quantes features queden per generarse
-        if (mod(i,30) == 0) 
-            fprintf("Processat:%d%\n", length(images)-i);
-        end
-
-        dataset(i, :) = features(:);
-    end
-        
-    % Una vegada tenim el dataset, fem un shuffle
-    dataset = dataset(randperm(size(dataset, 1)), :);
     
+    for i = 1:length(resizedImages)
+        
+        
+        [f, t] = getImageFeatures(filterImage(resizedImages{i}), names{i});
+        fprintf("Features de: %d - target %d \n", i, t);
+        data(i, :) = [f, t];
+    end
+    
+    % Una vegada tenim el dataset, fem un shuffle
+    fprintf("Barrejant les mostres del dataset\n\n");
+    all = data(randperm(size(data, 1)), :);
+    
+    features = all(:, [1:end-1]);
+    target = all(:,[end]);
+    fprintf("Dataset acabat\n\n");
 end
 
 

@@ -2,6 +2,8 @@
 addpath('OtherFunctions');  
 addpath('Segmentation');
 addpath('Features');
+addpath('Data');
+addpath('Predict');
 
 %% Carreguem Imatges d'exemple
 fname = '../Images/Train1/1/00001_00006_00024.png';
@@ -13,15 +15,25 @@ im3 = imread(fname3);
 
 
 
-%% Creem Dataset
 
-%data = createDataset();
+%% Creem Dataset i particions
+%{
+data = imageDatastore(fullfile("../Images"),'IncludeSubfolders',true,'FileExtensions','.png','LabelSource','foldernames');
+random = shuffle(data);
 
-%% Prediim
-%predictTrafficSignal(trainModel1);
+[train,test] = splitEachLabel(random,0.8);
+[xTrain , yTrain] = createDataset(train);
+[xTest , yTest] = createDataset(test);
 
-%% Guardar Model
-%save KNN KNN
+datasetRBCircles35 = [xTrain , yTrain];
+%}
+
+%% Guardem el model
+%save KNNRBCircle35 KNNRBCircle35
+
+%% Predim una imatge
+%predictTrafficSignal();
 
 
-
+%% Predim particio Test
+%ypred = predictTest(xTest, yTest);

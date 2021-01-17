@@ -1,10 +1,12 @@
 function class = predictTrafficSignal()
     % Mida de la imatge mes petita de les imatges Train
-    min_r = 25;
-    min_c = 25;
+    min_r = 35;
+    min_c = 35;
+    
+    model = "KNNRBCircle35";
     
     % Carreguem el millor model
-    load('KNN.mat');
+    load(sprintf('%s.mat', model));
     
     
     % Deixem escollir una imatge al usuari
@@ -13,15 +15,18 @@ function class = predictTrafficSignal()
        disp('No s''ha escollit cap imatge');
     else
        % Seleccionem l'imatge
-       fullpath = fullfile(path, file);
-       disp(['Imatge seleccionada: ', fullpath]);
-       im = imread(fullpath);
+       fname = fullfile(path, file);
+       disp(['Imatge seleccionada: ', fname]);
+       im = imread(fname);
+       
+       resizedImage = imresize(im, [min_r, min_c]);
        
        % Generem les caracteristiques de l'imatge triada
-       features = getImageFeatures(filterImage(im), fullpath, "Predict", min_r, min_c);
+       [features, target] = getImageFeatures(filterImage(resizedImage), fname);
        
        % Prediim
-       ypred = KNN.predictFcn(features);
+       ypred = KNNRBCircle35.predictFcn(features);
+       fprintf("Classe Predita\t -> %d\n", ypred);
        
        % Mostrem el Resultat
        answer = sprintf('../Images/Meta/%d.png', ypred);
