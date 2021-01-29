@@ -23,6 +23,12 @@ classdef App < matlab.apps.AppBase
 
         % Create UIFigure and components
         function createComponents(app)
+            addpath('OtherFunctions');  
+            addpath('Segmentation');
+            addpath('Features');
+            addpath('Data');
+            addpath('Predict');
+            addpath('Images');
 
             % Create UIFigure and hide until all components are created
             app.UIFigure = uifigure('Visible', 'off');
