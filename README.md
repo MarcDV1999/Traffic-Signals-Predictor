@@ -1,6 +1,6 @@
 # Traffic signals recognition
 
-The aim of the practice is to correctly identify a traffic signal from one of the 43 proposed signals:
+The aim of the project is to correctly identify a traffic signal from one of the 43 proposed signals:
 
 ![Captura de pantalla 2021-01-29 a las 18.22.20](README.assets/1.png)
 
