@@ -4,15 +4,7 @@ addpath('Segmentation');
 addpath('Features');
 addpath('Data');
 addpath('Predict');
-
-%% Carreguem Imatges d'exemple
-fname = '../Images/Train1/1/00001_00006_00024.png';
-fname2 = '../Images/Train1/1/00001_00008_00024.png';
-fname3 = '../Images/Train1/12/00012_00000_00000.png';
-im = imread(fname);
-im2 = imread(fname2);
-im3 = imread(fname3);
-
+addpath('Images');
 
 
 
@@ -32,7 +24,7 @@ datasetRBCircles35 = [xTrain , yTrain];
 %save KNNRBCircle35 KNNRBCircle35
 
 %% Predim una imatge
-%predictTrafficSignal();
+predictTrafficSignal();
 
 
 %% Predim particio Test
