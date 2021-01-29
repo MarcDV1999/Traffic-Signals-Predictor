@@ -2,7 +2,7 @@
 
 The aim of the practice is to correctly identify a traffic signal from one of the 43 proposed signals:
 
-![Captura de pantalla 2021-01-29 a las 18.22.20](README.assets/Captura de pantalla 2021-01-29 a las 18.22.20.png)
+![Captura de pantalla 2021-01-29 a las 18.22.20](README.assets/1.png)
 
 
 
@@ -14,13 +14,13 @@ Download the project and execute the App.m file
 
 Then it will appear the following window.
 
-![Captura de pantalla 2021-01-29 a las 18.17.02](README.assets/Captura de pantalla 2021-01-29 a las 18.17.02.png)
+![Captura de pantalla 2021-01-29 a las 18.17.02](README.assets/2.png)
 
 
 
 Selecting the image that you want to predict, it will appear another window with the results.
 
-![Captura de pantalla 2021-01-29 a las 18.19.06](README.assets/Captura de pantalla 2021-01-29 a las 18.19.06.png)
+![Captura de pantalla 2021-01-29 a las 18.19.06](README.assets/3.png)
 
 ## More Information
 
