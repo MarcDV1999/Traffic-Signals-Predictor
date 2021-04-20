@@ -28,7 +28,7 @@ For more information about the project, see the following document:
 
 - [Report](https://github.com/MarcDV1999/Traffic-signals/tree/main/Doc/Report.pdf)
 
-## Autor
+## Authors
 
 - **Marc Domènech i Vila** - *Initial work* - [MarcDV1999](https://github.com/MarcDV1999)
 - **Gerard Palomares** - *Initial work* - [ThePalo](https://github.com/ThePalo)
